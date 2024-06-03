@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Years and Days Converter</h2>
+
+    <h3>Convert Years to Days</h3>
+    <label for="years">Years:</label>
+    <input type="number" id="years" placeholder="Enter the number of years">
+    <br><br>
+    <button onclick="convertYearsToDays()">Convert to Days</button>
+    <p id="daysResult"></p>
+
+    <h3>Convert Days to Years</h3>
+    <label for="days">Days:</label>
+    <input type="number" id="days" placeholder="Enter the number of days">
+    <br><br>
+    <button onclick="convertDaysToYears()">Convert to Years</button>
+    <p id="yearsResult"></p>
+</body>
+<script>
+    function convertYearsToDays() {
+           
+            let years = document.getElementById('years').value;
+
+            
+            years = Number(years);
+
+            
+            let days = years * 365.25;
+
+           
+            document.getElementById('daysResult').innerText = years + ' years is approximately ' + days.toFixed(2) + ' days.';
+        }
+
+        function convertDaysToYears() {
+           
+            let days = document.getElementById('days').value;
+
+           
+            days = Number(days);
+
+            
+            let years = days / 365.25;
+
+          
+            document.getElementById('yearsResult').innerText = days + ' days is approximately ' + years.toFixed(2) + ' years.';
+        }
+</script>
+</html>

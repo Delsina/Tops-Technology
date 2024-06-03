@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Days Until Next Christmas</h2>
+    <button onclick="calculateDaysUntilChristmas()">Calculate Days</button>
+    <p id="result"></p>
+</body>
+<script>
+    function calculateDaysUntilChristmas() {
+            
+            let currentDate = new Date();
+            
+            
+            let currentYear = currentDate.getFullYear();
+            
+            
+            let christmasDate = new Date(currentYear, 11, 25); 
+            
+           
+            if (currentDate > christmasDate) {
+                christmasDate.setFullYear(currentYear + 1);
+            }
+            
+            
+            let timeDifference = christmasDate - currentDate;
+            
+            
+            let daysUntilChristmas = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+            
+           
+            document.getElementById('result').innerText = 'Days until next Christmas: ' + daysUntilChristmas;
+        }
+</script>
+</html>

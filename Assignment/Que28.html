@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function findLargest(num1, num2, num3) {
+    let largest;
+    
+    if (num1 >= num2 && num1 >= num3) {
+        largest = num1;
+    } else if (num2 >= num1 && num2 >= num3) {
+        largest = num2;
+    } else {
+        largest = num3;
+    }
+    
+    return largest;
+}
+
+
+document.write(findLargest(10, 20, 30)+"<br>");
+document.write(findLargest(50, 20, 30)+"<br>");
+document.write(findLargest(10, 90, 30)+"<br>");
+document.write(findLargest(10, 20, 5)+"<br>"); 
+
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* Optional styling */
+    button {
+        margin-top: 10px;
+    }
+</style>
+<body>
+    <div id="container">
+        <!-- Existing content -->
+        <p>This is some existing content.</p>
+    </div>
+    
+    <button onclick="addElement()">Add Element</button>
+</body>
+<script>
+    function addElement() {
+    
+    var newElement = document.createElement("p");
+    
+    var textNode = document.createTextNode("This is a new paragraph.");
+   
+    newElement.appendChild(textNode);
+   
+    var container = document.getElementById("container");
+    
+    container.appendChild(newElement);
+}
+</script>
+
+</html>

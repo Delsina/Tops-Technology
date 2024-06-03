@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function findMax(num1, num2, num3) {
+    return (num1 >= num2 && num1 >= num3) ? num1 :
+           (num2 >= num1 && num2 >= num3) ? num2 :
+           num3;
+}
+
+
+document.write(findMax(10, 20, 30)+"<br>"); 
+document.write(findMax(50, 20, 30)+"<br>"); 
+document.write(findMax(10, 90, 30)+"<br>"); 
+document.write(findMax(10, 20, 5)+"<br>");  
+document.write(findMax(5, 5, 5)+"<br>");   
+document.write(findMax(5, 15, 10)+"<br>");  
+
+</script>
+</html>

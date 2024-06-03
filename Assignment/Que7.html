@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Initial values
+let str = '10';
+let num = 10;
+
+// Check if they are exactly equal
+if (str === num) {
+  console.log('They are exactly equal');
+} else {
+  console.log('They are not exactly equal');
+  // Convert the string to a number
+  let convertedStr = Number(str);
+  // Check again
+  if (convertedStr === num) {
+    console.log('After conversion, they are exactly equal');
+  } else {
+    console.log('Even after conversion, they are not exactly equal');
+  }
+}
+
+</script>
+</html>
