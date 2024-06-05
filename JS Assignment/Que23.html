@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function isVowel(char) {
+   
+    char = char.toLowerCase();
+    
+    
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    
+    
+    return vowels.includes(char);
+}
+
+// Test cases
+document.write(isVowel('A') + "<br>");
+document.write(isVowel('b') + "<br>"); 
+document.write(isVowel('E') + "<br>");
+document.write(isVowel('x') + "<br>"); 
+document.write(isVowel('I') + "<br>");
+document.write(isVowel('o') + "<br>");
+document.write(isVowel('u') + "<br>");
+document.write(isVowel('Z') + "<br>"); 
+
+</script>
+</html>

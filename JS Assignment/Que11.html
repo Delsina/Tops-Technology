@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Rectangle Circumference </h2>
+    <label for="length">Length:</label>
+    <input type="number" id="length" placeholder="Enter the length">
+    <br><br>
+    <label for="width">Width:</label>
+    <input type="number" id="width" placeholder="Enter the width">
+    <br><br>
+    <button onclick="calculateCircumference()">Calculate Circumference</button>
+    <p id="result"></p>
+</body>
+<script>
+    function calculateCircumference() {
+            
+            let length = document.getElementById('length').value;
+            let width = document.getElementById('width').value;
+
+           
+            length = Number(length);
+            width = Number(width);
+
+           
+            let circumference = 2 * (length + width);
+
+            
+            document.getElementById('result').innerText = 'The circumference of the rectangle is: ' + circumference;
+        }
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function getFileExtension(filename) {
+    
+    const dotIndex = filename.lastIndexOf(".");
+    
+    
+    if (dotIndex !== -1 && dotIndex !== 0) {
+       
+        return filename.substring(dotIndex + 1);
+    } else {
+        
+        return "";
+    }
+}
+document.write(getFileExtension("example.html") + "<br>"); 
+document.write(getFileExtension("script.js")+ "<br>"); 
+document.write(getFileExtension("document.pdf")+ "<br>"); 
+ 
+</script>
+</html>

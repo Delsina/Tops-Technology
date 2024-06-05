@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function checkVowelOrConsonant(char) {
+    char = char.toLowerCase(); // Convert the character to lowercase to handle both uppercase and lowercase input
+    let result;
+    switch (char) {
+        case 'a':
+        case 'e':
+        case 'i':
+        case 'o':
+        case 'u':
+            result = "Vowel";
+            break;
+        default:
+            result = "Consonant";
+    }
+    return result;
+}
+
+
+document.write(checkVowelOrConsonant('A')+"<br>");
+document.write(checkVowelOrConsonant('b')+"<br>"); 
+document.write(checkVowelOrConsonant('E')+"<br>");
+document.write(checkVowelOrConsonant('x')+"<br>"); 
+document.write(checkVowelOrConsonant('I')+"<br>");
+document.write(checkVowelOrConsonant('o')+"<br>");
+document.write(checkVowelOrConsonant('u')+"<br>");
+document.write(checkVowelOrConsonant('Z')+"<br>"); 
+
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function getCurrentDate(format = 'mm-dd-yyyy') {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    let month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adding 1 to month since it is zero-indexed
+    let day = String(currentDate.getDate()).padStart(2, '0');
+
+    if (format.includes('yyyy')) {
+        format = format.replace('yyyy', year);
+    } else {
+        format = format.replace('yy', String(year).slice(-2));
+    }
+
+    if (format.includes('mm')) {
+        format = format.replace('mm', month);
+    } else {
+        format = format.replace('m', month);
+    }
+
+    if (format.includes('dd')) {
+        format = format.replace('dd', day);
+    } else {
+        format = format.replace('d', day);
+    }
+
+    return format;
+}
+
+
+document.write(getCurrentDate('mm-dd-yyyy')+"<br>"); 
+document.write(getCurrentDate('mm/dd/yyyy')+"<br>"); 
+document.write(getCurrentDate('dd-mm-yyyy')+"<br>"); 
+document.write(getCurrentDate('dd/mm/yyyy')+"<br>"); 
+
+</script>
+</html>

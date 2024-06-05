@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function arrayofObjectsToCSV(array) {
+    if (!Array.isArray(array) || array.length === 0) {
+        return '';
+    }
+
+   
+    const headers = Object.keys(array[0]);
+
+
+    let csv = headers.join(',') + '\n' + "<br>";
+
+    
+    csv += array.map(obj => headers.map(header => obj[header]).join(',')).join('\n') + "<br>";
+
+    return csv;
+}
+
+
+const data = [
+    { name: 'John', age: 30, city: 'New York' + "<br>"},
+    { name: 'Alice', age: 25, city: 'Los Angeles' + "<br>" },
+    { name: 'Bob', age: 35, city: 'Chicago' + "<br>" }
+];
+
+const csvString = arrayofObjectsToCSV(data);
+document.write(csvString);
+
+</script>
+</html>
