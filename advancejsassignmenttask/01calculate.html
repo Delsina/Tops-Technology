@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.cart-container {
+    width: 80%;
+    max-width: 800px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th, .cart-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.cart-table .product-info {
+    display: flex;
+    align-items: center;
+}
+
+.cart-table .product-info img {
+    margin-right: 10px;
+}
+
+.cart-table .quantity-input {
+    width: 50px;
+}
+
+.cart-table .remove-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.cart-table .remove-btn:hover {
+    background-color: #c0392b;
+}
+
+#total-price {
+    font-weight: bold;
+}
+
+</style>
+<body>
+    <div class="cart-container">
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product Info</th>
+                    <th>Quantity</th>
+                    <th>Price (per unit)</th>
+                    <th>Price (subtotal)</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <tr>
+                    <td class="product-info">
+                        <img src="https://cdn11.bigcommerce.com/s-8smrzb0w7f/images/stencil/original/products/25185/30399/61Y0LBZhAOL._SL1024___64172.1602400049.jpg?c=1" alt="Product Image" height="50px" width="50px">
+                        <div>Fortunata Window Hardware - Decorative Holdbacks - Mocha</div>
+                    </td>
+                    <td><input type="number" value="2" class="quantity-input" data-price="29.99"></td>
+                    <td>$29.99</td>
+                    <td class="subtotal">$59.98</td>
+                    <td><button class="remove-btn">Remove</button></td>
+                </tr>
+                <tr>
+                    <td class="product-info">
+                        <img src="https://m.media-amazon.com/images/I/61lQlSSOSiL.jpg" alt="Product Image" height="50px" width="50px">
+                        <div>Woven Trellis Window Hardware - Clip Rings - Bronze</div>
+                    </td>
+                    <td><input type="number" value="1" class="quantity-input" data-price="12.99"></td>
+                    <td>$12.99</td>
+                    <td class="subtotal">$12.99</td>
+                    <td><button class="remove-btn">Remove</button></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"></td>
+                    <td id="total-price">$72.97</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+<script>
+    // script.js
+document.addEventListener('DOMContentLoaded', function() {
+    const cartItems = document.getElementById('cart-items');
+    const totalPriceElement = document.getElementById('total-price');
+
+    function updateSubtotal(row) {
+        const quantityInput = row.querySelector('.quantity-input');
+        const price = parseFloat(quantityInput.getAttribute('data-price'));
+        const quantity = parseInt(quantityInput.value);
+        const subtotalElement = row.querySelector('.subtotal');
+        const subtotal = price * quantity;
+        subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+        updateTotalPrice();
+    }
+
+    function updateTotalPrice() {
+        const subtotalElements = document.querySelectorAll('.subtotal');
+        let total = 0;
+        subtotalElements.forEach(subtotalElement => {
+            total += parseFloat(subtotalElement.textContent.replace('$', ''));
+        });
+        totalPriceElement.textContent = `$${total.toFixed(2)}`;
+    }
+
+    cartItems.addEventListener('input', function(event) {
+        if (event.target.classList.contains('quantity-input')) {
+            updateSubtotal(event.target.closest('tr'));
+        }
+    });
+
+    cartItems.addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-btn')) {
+            event.target.closest('tr').remove();
+            updateTotalPrice();
+        }
+    });
+
+    // Initial calculation of subtotals and total price
+    document.querySelectorAll('.quantity-input').forEach(input => {
+        updateSubtotal(input.closest('tr'));
+    });
+});
+
+</script>
+
+</html>

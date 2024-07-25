@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+   
+</head>
+<style>
+    /* styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #32a89e;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 415px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 400px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+input:invalid, select:invalid {
+    border-color: #e74c3c;
+}
+
+small {
+    color: #e74c3c;
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    visibility: hidden;
+}
+
+input:invalid ~ small,
+select:invalid ~ small {
+    visibility: visible;
+}
+
+button {
+    width: 417px;
+    padding: 10px;
+    background-color: #32a89e;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+button:hover {
+    background-color: #28a89e;
+}
+select{
+    width: 417px;
+}
+
+</style>
+<body>
+    <div class="form-container">
+        <h2>Form Validation</h2>
+        <form id="form" novalidate>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required>
+                <small>Error message</small>
+                
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+                <small>Error message</small>
+                
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <small>Error message</small>
+              
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Birth Date</label>
+                <input type="date" id="birthdate" required>
+                <small>Error message</small>
+               
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" required>
+                    <option value="">Select your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <small>Error message</small>
+                
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+   
+</body>
+<script>
+    // script.js
+document.getElementById('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let isValid = true;
+
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const birthdate = document.getElementById('birthdate');
+    const gender = document.getElementById('gender');
+
+    if (name.value.trim() === '') {
+        showError(name, 'Full Name is required');
+        isValid = false;
+    } else {
+        showSuccess(name);
+    }
+
+    if (email.value.trim() === '') {
+        showError(email, 'Email is required');
+        isValid = false;
+    } else if (!isValidEmail(email.value.trim())) {
+        showError(email, 'Email is not valid');
+        isValid = false;
+    } else {
+        showSuccess(email);
+    }
+
+    if (password.value.trim() === '') {
+        showError(password, 'Password is required');
+        isValid = false;
+    } else {
+        showSuccess(password);
+    }
+
+    if (birthdate.value.trim() === '') {
+        showError(birthdate, 'Birth Date is required');
+        isValid = false;
+    } else {
+        showSuccess(birthdate);
+    }
+
+    if (gender.value.trim() === '') {
+        showError(gender, 'Gender is required');
+        isValid = false;
+    } else {
+        showSuccess(gender);
+    }
+
+    if (isValid) {
+        alert('Form submitted successfully!');
+    }
+});
+
+function showError(input, message) {
+    const formGroup = input.parentElement;
+    const small = formGroup.querySelector('small');
+    small.innerText = message;
+    formGroup.classList.add('error');
+    input.classList.add('error');
+}
+
+function showSuccess(input) {
+    const formGroup = input.parentElement;
+    const small = formGroup.querySelector('small');
+    small.innerText = '';
+    formGroup.classList.remove('error');
+    input.classList.remove('error');
+}
+
+function isValidEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/i;
+    return re.test(String(email).toLowerCase());
+}
+
+</script>
+</html>

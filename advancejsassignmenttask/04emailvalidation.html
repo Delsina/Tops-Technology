@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+    body{
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #e3f2fd;
+        gap: 202px;
+    }
+    .input-field{
+        position: relative;
+        height: 50px;
+        width: 280px;
+        border-radius: 6px;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    .input-field input{
+        height: 100%;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-radius: 6px;
+        padding: 0 15px;
+        font-size: 15px;
+        font-weight: 400;
+    }
+    input::placeholder{
+        color: #b4b4b4;
+    }
+    .input-field .email-icon{
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 22px;
+        color: #b4b4b4;
+    }
+</style>
+<body>
+    <h1 style="font-size: xx-large;color: #4bb543;">Email<br> Validation<br> Javascript</h1>
+    <div class="input-field">
+        <input type="email" placeholder="Enter Your Email">
+        <i class="fa-regular fa-envelope email-icon"></i>
+        <!-- <i class="fa-regular fa-circle-check"></i> -->
+    </div>
+    
+</body>
+<script>
+    const input = document.querySelector("input"),
+            emailIcon=document.querySelector(".email-icon")
+
+            input.addEventListener("keyup",() =>{
+                let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                if(input.value ===""){
+                    emailIcon.classList.replace("fa-circle-check","fa-envelope");
+                    return emailIcon.style.color = "#b4b4b4";
+                }
+                if(input.value.match(pattern)){
+                    emailIcon.classList.replace("fa-envelope", "fa-circle-check");
+                    return emailIcon.style.color = "#4bb543";
+                }
+                emailIcon.classList.replace("fa-circle-check","fa-envelope");
+                emailIcon.style.color="#de0611";
+            })
+</script>
+</html>
